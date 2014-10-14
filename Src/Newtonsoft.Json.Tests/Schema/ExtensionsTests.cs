@@ -292,7 +292,7 @@ namespace Newtonsoft.Json.Tests.Schema
         [Test]
         public void MultipleOf_Int()
         {
-            ExceptionAssert.Throws<JsonSchemaException>("Integer 10 is not a multiple of 3.",
+            ExceptionAssert.Throws<JsonSchemaException>(
                 () =>
                 {
                     JsonSchema schema = new JsonSchema();

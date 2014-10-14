@@ -1418,7 +1418,7 @@ namespace Newtonsoft.Json.Tests
         [Test]
         public void ReadAsDecimalFailure()
         {
-            ExceptionAssert.Throws<JsonSchemaException>("Float 5.5 is not a multiple of 1. Line 1, position 3.",
+            ExceptionAssert.Throws<JsonSchemaException>(
                 () =>
                 {
                     JsonSchema s = new JsonSchemaGenerator().Generate(typeof(decimal));
@@ -1429,7 +1429,7 @@ namespace Newtonsoft.Json.Tests
                         Schema = s
                     };
                     reader.ReadAsDecimal();
-                });
+                }, "Float 5.5 is not a multiple of 1. Line 1, position 3.");
         }
 
         [Test]

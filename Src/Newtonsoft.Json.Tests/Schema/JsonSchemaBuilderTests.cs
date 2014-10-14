@@ -416,12 +416,12 @@ namespace Newtonsoft.Json.Tests.Schema
 
             resolver.ResolveExternals = false;
 
-            ExceptionAssert.Throws<Exception>(@"Could not resolve schema reference 'http://localhost:1234/subSchemas.json#/refToInteger'.",
+            ExceptionAssert.Throws<Exception>(
             () =>
             {
                 JsonSchemaBuilder failBuilder = new JsonSchemaBuilder(resolver);
                 JsonSchema failSchema = failBuilder.Read(new JsonTextReader(new StringReader(json)));
-            });
+            },@"Could not resolve schema reference 'http://localhost:1234/subSchemas.json#/refToInteger'.");
 
 #if !PORTABLE40
             resolver.ResolveExternals = true;
