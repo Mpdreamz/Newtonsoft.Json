@@ -324,13 +324,13 @@ namespace Newtonsoft.Json.Schema
         /// <param name="reader">The <see cref="JsonReader"/> containing the JSON Schema to read.</param>
         /// <param name="resolver">The <see cref="JsonSchemaResolver"/> to use when resolving schema references.</param>
         /// <returns>The <see cref="JsonSchema"/> object representing the JSON Schema.</returns>
-        public static JsonSchema Read(JsonReader reader, JsonSchemaResolver resolver)
+        public static JsonSchema Read(JsonReader reader, JsonSchemaResolver resolver, Uri documentLocation = null)
         {
             ValidationUtils.ArgumentNotNull(reader, "reader");
             ValidationUtils.ArgumentNotNull(resolver, "resolver");
 
             JsonSchemaBuilder builder = new JsonSchemaBuilder(resolver);
-            return builder.Read(reader);
+            return builder.Read(reader, documentLocation);
         }
 
         /// <summary>
@@ -349,13 +349,13 @@ namespace Newtonsoft.Json.Schema
         /// <param name="json">The json.</param>
         /// <param name="resolver">The resolver.</param>
         /// <returns>A <see cref="JsonSchema"/> populated from the string that contains JSON.</returns>
-        public static JsonSchema Parse(string json, JsonSchemaResolver resolver)
+        public static JsonSchema Parse(string json, JsonSchemaResolver resolver, Uri documentLocation = null)
         {
             ValidationUtils.ArgumentNotNull(json, "json");
 
             using (JsonReader reader = new JsonTextReader(new StringReader(json)))
             {
-                return Read(reader, resolver);
+                return Read(reader, resolver, documentLocation);
             }
         }
 
